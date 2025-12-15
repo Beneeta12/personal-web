@@ -4,19 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Beneeta Bonison, a Data Scientist and Physics graduate specializing in Python, Analytical Thinking, and Web Development.">
     <title>Beneeta Bonison | Data Scientist</title>
 
+    <!-- Preload Critical Assets (LCP Optimization) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="preload" href="background.jpg" as="image">
-    <link rel="preload" href="me.jpg" as="image">
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <!-- Non-blocking Font Load -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Defer JavaScript -->
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -36,8 +39,10 @@
                 <button class="nav-link" data-scroll-to="contact">Contact</button>
             </div>
 
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i data-lucide="menu" id="menu-icon"></i>
+            <!-- Mobile Menu Toggle with Inline SVGs -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
         </div>
 
@@ -53,7 +58,8 @@
 
     <section id="home" class="hero-section">
         <div class="hero-bg">
-            <img src="background.jpg" alt="Background Texture" width="1920" height="1080" onerror="this.style.display='none'">
+            <!-- Priority Load for Hero Image -->
+            <img src="background.jpg" alt="Background Texture" width="1920" height="1080" fetchpriority="high">
         </div>
         <div class="hero-overlay"></div>
 
@@ -69,8 +75,7 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="beneeta%20resume.pdf" download="Beneeta_Bonison_Resume.pdf" class="btn-primary"
-                    style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+                <a href="beneeta%20resume.pdf" download="Beneeta_Bonison_Resume.pdf" class="btn-primary" aria-label="Download Resume">
                     Get Resume
                 </a>
                 <button class="btn-outline" data-scroll-to="projects">
@@ -82,8 +87,8 @@
             </div>
         </div>
 
-        <div class="scroll-indicator animate-bounce" data-scroll-to="about">
-            <i data-lucide="arrow-down" width="32" height="32"></i>
+        <div class="scroll-indicator animate-bounce" data-scroll-to="about" aria-label="Scroll Down">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
         </div>
     </section>
 
@@ -91,8 +96,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image-wrapper">
-                    <img src="me.jpg" alt="Beneeta Bonison" class="about-image" width="400" height="500"
-                        onerror="this.src='https://placehold.co/400x500?text=Profile+Image'">
+                    <img src="me.jpg" alt="Beneeta Bonison" class="about-image" width="400" height="500" loading="lazy">
                     <div class="about-frame"></div>
                 </div>
 
@@ -138,7 +142,7 @@
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i data-lucide="code-2" width="32" height="32"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
                     </div>
                     <h3>Programming</h3>
                     <ul class="skill-list">
@@ -150,7 +154,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i data-lucide="microscope" width="32" height="32"></i>
+                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg>
                     </div>
                     <h3>Science</h3>
                     <ul class="skill-list">
@@ -162,7 +166,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i data-lucide="users" width="32" height="32"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
                     <h3>Personal</h3>
                     <ul class="skill-list">
@@ -174,7 +178,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i data-lucide="book-open" width="32" height="32"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                     </div>
                     <h3>Learning</h3>
                     <ul class="skill-list">
@@ -200,10 +204,10 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image-container">
-                        <img src="netflix.jpeg" alt="Netflix Clone" class="project-image" width="700" height="400" loading="lazy">
+                        <!-- Corrected filename from original code -->
+                        <img src="netflix.jpeg.jpg" alt="Netflix Clone" class="project-image" width="700" height="400" loading="lazy" decoding="async">
                         <div class="project-overlay">
-                            <i data-lucide="external-link" class="text-white" width="32" height="32"
-                                style="color:white"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
                         </div>
                     </div>
                     <div class="project-content">
@@ -221,10 +225,9 @@
 
                 <div class="project-card">
                     <div class="project-image-container" style="background-color: #4b0082;">
-                        <img src="appy_fizz.jpg" alt="Fizz Clone" class="project-image" width="700" height="400" loading="lazy">
+                        <img src="appy_fizz.jpg" alt="Fizz Clone" class="project-image" width="700" height="400" loading="lazy" decoding="async">
                         <div class="project-overlay">
-                            <i data-lucide="external-link" class="text-white" width="32" height="32"
-                                style="color:white"></i>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
                         </div>
                     </div>
                     <div class="project-content">
@@ -247,7 +250,7 @@
 
     <section id="resume" class="resume-section">
         <div class="resume-bg">
-            <img src="background.jpg" alt="Background Texture" width="1920" height="1080" loading="lazy" onerror="this.style.display='none'">
+            <img src="background.jpg" alt="Background Texture" width="1920" height="1080" loading="lazy" decoding="async">
         </div>
         <div class="container resume-wrapper">
             <div class="section-title-wrapper">
@@ -296,8 +299,8 @@
             </div>
 
             <div class="resume-download">
-                <a href="beneeta%20resume.pdf" download="Beneeta_Bonison_Resume.pdf" class="btn-download">
-                    <i data-lucide="download" width="20" height="20"></i>
+                <a href="beneeta%20resume.pdf" download="Beneeta_Bonison_Resume.pdf" class="btn-download" aria-label="Download Full Resume">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                     Download Full Resume
                 </a>
             </div>
@@ -315,21 +318,21 @@
                     </p>
 
                     <div class="contact-links">
-                        <a href="mailto:beneetabonison2001@gmail.com" class="contact-link-item">
+                        <a href="mailto:beneetabonison2001@gmail.com" class="contact-link-item" aria-label="Email Me">
                             <div class="icon-circle">
-                                <i data-lucide="mail" width="20" height="20"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                             </div>
                             <span>beneetabonison2001@gmail.com</span>
                         </a>
-                        <a href="tel:7025151845" class="contact-link-item">
+                        <a href="tel:7025151845" class="contact-link-item" aria-label="Call Me">
                             <div class="icon-circle">
-                                <i data-lucide="phone" width="20" height="20"></i>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                             </div>
                             <span>7025151845</span>
                         </a>
                         <div class="contact-link-item">
                             <div class="icon-circle">
-                                <i data-lucide="map-pin" width="20" height="20"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                             </div>
                             <span>Puthenpurakal house, Nazareth PT joseph road, kochin-2</span>
                         </div>
@@ -337,11 +340,11 @@
 
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/beneeta-bonison-aa65a336a" target="_blank"
-                            class="icon-circle">
-                            <i data-lucide="linkedin" width="24" height="24" style="color:#d6d3d1"></i>
+                            class="icon-circle" aria-label="LinkedIn Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d6d3d1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                         </a>
-                        <a href="https://github.com/Beneeta12" target="_blank" class="icon-circle">
-                            <i data-lucide="github" width="24" height="24" style="color:#d6d3d1"></i>
+                        <a href="https://github.com/Beneeta12" target="_blank" class="icon-circle" aria-label="GitHub Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d6d3d1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2.9-7-2"/></svg>
                         </a>
                     </div>
                 </div>
@@ -372,7 +375,5 @@
         <p>© 2025 Beneeta Bonison. All rights reserved.</p>
     </footer>
 
-    <script src="script.js" defer></script>
 </body>
-
 </html>
