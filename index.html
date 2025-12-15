@@ -7,18 +7,35 @@
     <meta name="description" content="Portfolio of Beneeta Bonison, a Data Scientist and Physics graduate specializing in Python, Analytical Thinking, and Web Development.">
     <title>Beneeta Bonison | Data Scientist</title>
 
-    <!-- Preload Critical Assets (LCP Optimization) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="background.jpg" as="image">
-    
-    <!-- CSS Link -->
+    <!-- 1. Preload ONLY the Critical Hero Image (LCP) -->
+    <link rel="preload" href="background.jpg" as="image" fetchpriority="high">
+
+    <!-- 2. Critical CSS (Inline for instant load of above-the-fold content) -->
+    <style>
+        /* Critical styles for immediate rendering */
+        :root { --bg-primary: #fafaf9; --text-main: #292524; --nav-height: 80px; }
+        body { margin: 0; font-family: sans-serif; background-color: var(--bg-primary); color: var(--text-main); }
+        .navbar { height: var(--nav-height); width: 100%; position: fixed; top: 0; z-index: 1000; background: rgba(250,250,249,0.9); }
+        .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; background-color: #dccfb8; /* Fallback color for LCP score */ }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
+
+    <!-- 3. Load Main CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Non-blocking Font Load -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- 4. Non-Blocking Google Fonts (The "99" Trick) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load fonts with media="print" to avoid blocking render, then switch to 'all' -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" 
+          rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Fallback for no-js browsers -->
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </noscript>
 
-    <!-- Defer JavaScript -->
+    <!-- 5. Defer JavaScript -->
     <script src="script.js" defer></script>
 </head>
 
@@ -39,7 +56,7 @@
                 <button class="nav-link" data-scroll-to="contact">Contact</button>
             </div>
 
-            <!-- Mobile Menu Toggle with Inline SVGs -->
+            <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
                 <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -57,8 +74,8 @@
     </nav>
 
     <section id="home" class="hero-section">
+        <!-- LCP Optimization: High Priority Background -->
         <div class="hero-bg">
-            <!-- Priority Load for Hero Image -->
             <img src="background.jpg" alt="Background Texture" width="1920" height="1080" fetchpriority="high">
         </div>
         <div class="hero-overlay"></div>
@@ -96,7 +113,8 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image-wrapper">
-                    <img src="me.jpg" alt="Beneeta Bonison" class="about-image" width="400" height="500" loading="lazy">
+                    <!-- Loading Lazy is crucial here -->
+                    <img src="me.jpg" alt="Beneeta Bonison" class="about-image" width="400" height="500" loading="lazy" decoding="async">
                     <div class="about-frame"></div>
                 </div>
 
@@ -204,7 +222,6 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image-container">
-                        <!-- Corrected filename from original code -->
                         <img src="netflix.jpeg.jpg" alt="Netflix Clone" class="project-image" width="700" height="400" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
