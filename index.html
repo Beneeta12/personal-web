@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneeta Bonison | Data Scientist</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" href="background.jpg" as="image">
+    <link rel="preload" href="me.jpg" as="image">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo" data-scroll-to="home">
+                B.B.
+            </div>
+
+            <div class="nav-links">
+                <button class="nav-link" data-scroll-to="home">Home</button>
+                <button class="nav-link" data-scroll-to="about">About</button>
+                <button class="nav-link" data-scroll-to="skills">Skills</button>
+                <button class="nav-link" data-scroll-to="projects">Projects</button>
+                <button class="nav-link" data-scroll-to="resume">Resume</button>
+                <button class="nav-link" data-scroll-to="contact">Contact</button>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <div class="mobile-menu-overlay" id="mobile-menu">
+            <button class="mobile-link" data-scroll-to="home">Home</button>
+            <button class="mobile-link" data-scroll-to="about">About</button>
+            <button class="mobile-link" data-scroll-to="skills">Skills</button>
+            <button class="mobile-link" data-scroll-to="projects">Projects</button>
+            <button class="mobile-link" data-scroll-to="resume">Resume</button>
+            <button class="mobile-link" data-scroll-to="contact">Contact</button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="hero-bg">
+            <img src="background.jpg" alt="Background Texture" width="1920" height="1080" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content animate-fade-in-up">
+            <span class="section-subtitle">Portfolio</span>
+            <h1 class="hero-title">
+                Beneeta Bonison <br />
+                <span class="hero-subtitle">Data Scientist</span>
+            </h1>
+            <p class="hero-desc">
+                Motivated and analytical Physics graduate leveraging scientific principles to solve data-driven
+                problems.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="beneeta%20resume.pdf" download="Beneeta_Bonison_Resume.pdf" class="btn-primary"
+                    style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+                    Get Resume
+                </a>
+                <button class="btn-outline" data-scroll-to="projects">
+                    View Projects
+                </button>
+                <button class="btn-outline" data-scroll-to="contact">
+                    Contact
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-indicator animate-bounce" data-scroll-to="about">
+            <i data-lucide="arrow-down" width="32" height="32"></i>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="me.jpg" alt="Beneeta Bonison" class="about-image" width="400" height="500"
+                        onerror="this.src='https://placehold.co/400x500?text=Profile+Image'">
+                    <div class="about-frame"></div>
+                </div>
+
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <div class="about-text">
+                        <p>
+                            I am a B.Sc. Physics graduate from Mahatma Gandhi University with a strong foundation in
+                            scientific principles and mathematics. My academic background has honed my analytical skills
+                            and attention to detail.
+                        </p>
+                        <p>
+                            Currently, I am expanding my horizons into Data Science and Web Development. I possess
+                            excellent problem-solving abilities and am eager to leverage my background to contribute
+                            effectively to organizational goals.
+                        </p>
+                    </div>
+
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <h3>Education</h3>
+                            <p>B.Sc. Physics</p>
+                            <p class="detail-sub">Mahatma Gandhi University</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Focus</h3>
+                            <p>Data Science & Web Dev</p>
+                            <p class="detail-sub">Python, Analytical Thinking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">Technical & Soft Skills</span>
+                <h2 class="section-title">My Toolkit</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i data-lucide="code-2" width="32" height="32"></i>
+                    </div>
+                    <h3>Programming</h3>
+                    <ul class="skill-list">
+                        <li><span class="bullet"></span>Python</li>
+                        <li><span class="bullet"></span>Java</li>
+                        <li><span class="bullet"></span>HTML / CSS</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i data-lucide="microscope" width="32" height="32"></i>
+                    </div>
+                    <h3>Science</h3>
+                    <ul class="skill-list">
+                        <li><span class="bullet"></span>Physics</li>
+                        <li><span class="bullet"></span>Mathematics</li>
+                        <li><span class="bullet"></span>Scientific Principles</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i data-lucide="users" width="32" height="32"></i>
+                    </div>
+                    <h3>Personal</h3>
+                    <ul class="skill-list">
+                        <li><span class="bullet"></span>Communication</li>
+                        <li><span class="bullet"></span>Teamwork</li>
+                        <li><span class="bullet"></span>Time Management</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i data-lucide="book-open" width="32" height="32"></i>
+                    </div>
+                    <h3>Learning</h3>
+                    <ul class="skill-list">
+                        <li><span class="bullet"></span>Self Learning</li>
+                        <li><span class="bullet"></span>Data Science (Ongoing)</li>
+                        <li><span class="bullet"></span>Web Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="projects-header">
+                <div>
+                    <span class="section-subtitle">Academic & Personal</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                </div>
+                <a href="https://github.com/Beneeta12" target="_blank" class="github-link">View Github</a>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="netflix.jpeg" alt="Netflix Clone" class="project-image" width="700" height="400" loading="lazy">
+                        <div class="project-overlay">
+                            <i data-lucide="external-link" class="text-white" width="32" height="32"
+                                style="color:white"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Web Development</span>
+                        <h3 class="project-title">Netflix Clone</h3>
+                        <p class="project-desc">
+                            A static website clone of the Netflix homepage inspired by my journey at Brototype.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container" style="background-color: #4b0082;">
+                        <img src="appy_fizz.jpg" alt="Fizz Clone" class="project-image" width="700" height="400" loading="lazy">
+                        <div class="project-overlay">
+                            <i data-lucide="external-link" class="text-white" width="32" height="32"
+                                style="color:white"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Web Development</span>
+                        <h3 class="project-title">Fizz Clone</h3>
+                        <p class="project-desc">
+                            A project focused on layout design and styling, strengthening front-end development
+                            fundamentals.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="resume-section">
+        <div class="resume-bg">
+            <img src="background.jpg" alt="Background Texture" width="1920" height="1080" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="container resume-wrapper">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">Resume & Experience</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        2025 - Present
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <h3 class="timeline-role">Data Science</h3>
+                        <div class="timeline-company">Brototype</div>
+                        <p class="timeline-desc">
+                            Ongoing training in Data Science and software development best practices.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        2020 - 2023
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <h3 class="timeline-role">B.Sc. Physics</h3>
+                        <div class="timeline-company">Mahathma Gandhi University</div>
+                        <p class="timeline-desc">
+                            Graduated with a strong analytical foundation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        2017 - 2019
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <h3 class="timeline-role">Higher Secondary</h3>
+                        <div class="timeline-company">Our Lady's Girls Convent HSS</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-download">
+                <a href="beneeta%20resume.pdf" download="Beneeta_Bonison_Resume.pdf" class="btn-download">
+                    <i data-lucide="download" width="20" height="20"></i>
+                    Download Full Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-subtitle">Get in touch</span>
+                    <h2>Connect With Me</h2>
+                    <p class="contact-desc">
+                        I am open to opportunities in Data Science and Software Development.
+                    </p>
+
+                    <div class="contact-links">
+                        <a href="mailto:beneetabonison2001@gmail.com" class="contact-link-item">
+                            <div class="icon-circle">
+                                <i data-lucide="mail" width="20" height="20"></i>
+                            </div>
+                            <span>beneetabonison2001@gmail.com</span>
+                        </a>
+                        <a href="tel:7025151845" class="contact-link-item">
+                            <div class="icon-circle">
+                                <i data-lucide="phone" width="20" height="20"></i>
+                            </div>
+                            <span>7025151845</span>
+                        </a>
+                        <div class="contact-link-item">
+                            <div class="icon-circle">
+                                <i data-lucide="map-pin" width="20" height="20"></i>
+                            </div>
+                            <span>Puthenpurakal house, Nazareth PT joseph road, kochin-2</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/beneeta-bonison-aa65a336a" target="_blank"
+                            class="icon-circle">
+                            <i data-lucide="linkedin" width="24" height="24" style="color:#d6d3d1"></i>
+                        </a>
+                        <a href="https://github.com/Beneeta12" target="_blank" class="icon-circle">
+                            <i data-lucide="github" width="24" height="24" style="color:#d6d3d1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formspree.io/f/mzznkrpd" method="POST">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-input" placeholder="Your Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-input" placeholder="you@example.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea rows="4" name="message" class="form-textarea"
+                            placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Beneeta Bonison. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
