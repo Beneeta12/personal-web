@@ -2,41 +2,25 @@
    1. VARIABLES & RESET
 ----------------------------------------------------------- */
 :root {
-    /* Color Palette (Stone/Earth Tones) */
-    --bg-primary: #fafaf9;
-    /* stone-50 */
-    --bg-secondary: #f5f5f4;
-    /* stone-100 */
-    --bg-accent: #edebe6;
-    /* custom beige */
-    --bg-dark: #1c1917;
-    /* stone-900 */
-    --bg-card: #faf9f6;
-    /* off-white */
+    /* Color Palette */
+    --bg-primary: #fafaf9; /* stone-50 */
+    --bg-secondary: #f5f5f4; /* stone-100 */
+    --bg-accent: #edebe6; /* custom beige */
+    --bg-dark: #1c1917; /* stone-900 */
+    --bg-card: #faf9f6; /* off-white */
 
-    --text-main: #292524;
-    /* stone-800 */
-    --text-light: #57534e;
-    /* stone-600 */
-    --text-muted: #78716c;
-    /* stone-500 */
-    --text-inverse: #fafaf9;
-    /* stone-50 */
+    --text-main: #292524; /* stone-800 */
+    --text-light: #57534e; /* stone-600 */
+    --text-muted: #78716c; /* stone-500 */
+    --text-inverse: #fafaf9; /* stone-50 */
 
-    --border-light: #e7e5e4;
-    /* stone-200 */
-    --border-dark: #44403c;
-    /* stone-700 */
+    --border-light: #e7e5e4; /* stone-200 */
+    --border-dark: #44403c; /* stone-700 */
 
     /* Spacing & Layout */
     --nav-height: 80px;
     --container-width: 1150px;
 }
-
-/* PERFORMANCE OPTIMIZATION: 
-   REMOVED: @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
-   This is now handled by non-blocking <link> tags in index.html
-*/
 
 * {
     margin: 0;
@@ -53,11 +37,7 @@ body {
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-.font-serif {
+h1, h2, h3, h4, .font-serif {
     font-family: 'Playfair Display', serif;
 }
 
@@ -71,8 +51,7 @@ ul {
     list-style: none;
 }
 
-button,
-.btn {
+button, .btn {
     cursor: pointer;
     border: none;
     font-family: 'Inter', sans-serif;
@@ -96,7 +75,6 @@ button,
     background: #a8a29e;
 }
 
-/* Selection Color */
 ::selection {
     background-color: var(--border-light);
     color: var(--bg-dark);
@@ -130,29 +108,20 @@ button,
     color: var(--text-main);
 }
 
-/* Performance Improvement: Content-Visibility for off-screen sections */
-#skills,
-#projects,
-#resume,
-#contact {
-    /* Tells the browser to skip the rendering and layout work for these elements until they are needed (e.g., scrolled into viewport) */
+/* Performance: Content-Visibility for off-screen sections */
+#skills, #projects, #resume, #contact {
     content-visibility: auto;
-    /* Optional: Provides a rough height estimate to prevent layout shift when content loads */
     contain-intrinsic-size: 100px 800px;
 }
 
+.hidden {
+    display: none;
+}
 
 /* Fade In Up Animation */
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in-up {
@@ -161,15 +130,8 @@ button,
 
 /* Bounce Animation */
 @keyframes bounceSlow {
-
-    0%,
-    100% {
-        transform: translateY(-25%);
-    }
-
-    50% {
-        transform: none;
-    }
+    0%, 100% { transform: translateY(-25%); }
+    50% { transform: none; }
 }
 
 .animate-bounce {
@@ -184,8 +146,7 @@ button,
     top: 0;
     width: 100%;
     z-index: 1000;
-    /* Using opacity and blur for a performance-friendly, semi-transparent effect */
-    background-color: rgba(250, 250, 249, 0.9); 
+    background-color: rgba(250, 250, 249, 0.9);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-light);
     height: var(--nav-height);
@@ -223,8 +184,7 @@ button,
     border-bottom: 1px solid transparent;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover, .nav-link.active {
     color: var(--text-main);
     font-weight: 600;
     border-bottom-color: var(--text-main);
@@ -234,6 +194,7 @@ button,
     display: none;
     background: transparent;
     color: var(--text-main);
+    padding: 8px;
 }
 
 /* Mobile Menu Overlay */
@@ -250,8 +211,6 @@ button,
     align-items: center;
     gap: 1.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
-    /* Hidden by default */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -294,8 +253,7 @@ button,
 }
 
 .hero-bg img {
-    /* Ensures image fills its container while maintaining aspect ratio */
-    width: 100%; 
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }
@@ -352,6 +310,10 @@ button,
     font-weight: 500;
     border-radius: 2px;
     transition: background-color 0.3s;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -362,8 +324,7 @@ button,
     padding: 12px 32px;
     border: 1px solid var(--bg-dark);
     color: var(--bg-dark);
-    /* Using a low-opacity white background with blur for better contrast/readability */
-    background-color: rgba(255, 255, 255, 0.5); 
+    background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(4px);
     font-weight: 500;
     border-radius: 2px;
@@ -574,8 +535,7 @@ button,
 }
 
 .project-image {
-    /* Ensures the image fills the container, respects width/height attributes for CLS */
-    width: 100%; 
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }
@@ -597,13 +557,6 @@ button,
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.project-bg-text {
-    font-weight: bold;
-    font-size: 2.5rem;
-    color: #fff;
-    z-index: 1;
 }
 
 .project-overlay {
@@ -676,6 +629,7 @@ button,
 .resume-wrapper {
     max-width: 800px;
     width: 100%;
+    z-index: 1;
 }
 
 .resume-bg {
@@ -701,7 +655,6 @@ button,
     gap: 3rem;
 }
 
-/* Desktop layout for timeline */
 @media (min-width: 768px) {
     .timeline {
         margin-left: 0;
@@ -733,7 +686,6 @@ button,
     flex-shrink: 0;
 }
 
-/* Dot on the line */
 .timeline-dot {
     position: absolute;
     width: 10px;
@@ -742,14 +694,12 @@ button,
     border-radius: 50%;
     border: 2px solid var(--bg-primary);
     left: -2rem;
-    /* Mobile position relative to padding */
     top: 6px;
 }
 
 @media (min-width: 768px) {
     .timeline-dot {
         left: -5px;
-        /* On the border line */
         top: 8px;
     }
 }
@@ -829,7 +779,6 @@ button,
 .contact-info h2 {
     font-size: 3rem;
     color: #F5F5DC;
-    /* Beige text */
     margin: 1rem 0 2rem 0;
 }
 
@@ -880,7 +829,6 @@ button,
 /* Form Styles */
 .contact-form {
     background-color: rgba(41, 37, 36, 0.5);
-    /* semi-transparent */
     backdrop-filter: blur(4px);
     border: 1px solid var(--border-dark);
     padding: 2rem;
@@ -898,8 +846,7 @@ button,
     margin-bottom: 0.5rem;
 }
 
-.form-input,
-.form-textarea {
+.form-input, .form-textarea {
     width: 100%;
     background-color: rgba(28, 25, 23, 0.5);
     border: 1px solid var(--text-light);
@@ -911,8 +858,7 @@ button,
     transition: border-color 0.3s;
 }
 
-.form-input:focus,
-.form-textarea:focus {
+.form-input:focus, .form-textarea:focus {
     border-color: #a8a29e;
 }
 
@@ -958,12 +904,10 @@ button,
 
     .navbar .nav-links {
         display: none;
-        /* Hide desktop nav */
     }
 
     .mobile-menu-btn {
         display: block;
-        /* Show mobile toggle */
     }
 
     .hero-title {
@@ -974,9 +918,7 @@ button,
         flex-direction: column;
     }
 
-    .about-grid,
-    .projects-grid,
-    .contact-grid {
+    .about-grid, .projects-grid, .contact-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
