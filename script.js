@@ -1,28 +1,15 @@
 // --------------------------------------------------------
-// PERFORMANCE OPTIMIZATION: 
-// Wrap icon creation in DOMContentLoaded to prevent blocking 
-// the main thread while the browser is parsing the initial HTML.
-// --------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide Icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-});
-
-
-// --------------------------------------------------------
-// 1. NAVIGATION & SCROLL LOGIC
+// 1. NAVIGATION & MENU LOGIC
 // --------------------------------------------------------
 
-// Helper to handle menu state
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
-const menuIcon = document.getElementById('menu-icon');
+const iconMenu = document.getElementById('icon-menu');
+const iconClose = document.getElementById('icon-close');
 let isMenuOpen = false;
 
 function toggleMenu(forceClose = false) {
-    if (!mobileMenuBtn || !mobileMenu || !menuIcon) return;
+    if (!mobileMenuBtn || !mobileMenu) return;
 
     if (forceClose) {
         isMenuOpen = false;
@@ -32,14 +19,12 @@ function toggleMenu(forceClose = false) {
 
     if (isMenuOpen) {
         mobileMenu.classList.add('open');
-        menuIcon.setAttribute('data-lucide', 'x');
+        iconMenu.classList.add('hidden');
+        iconClose.classList.remove('hidden');
     } else {
         mobileMenu.classList.remove('open');
-        menuIcon.setAttribute('data-lucide', 'menu');
-    }
-    // Re-create icons to ensure the 'x' icon is rendered when opened
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
+        iconMenu.classList.remove('hidden');
+        iconClose.classList.add('hidden');
     }
 }
 
@@ -48,8 +33,9 @@ if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => toggleMenu());
 }
 
+
 // --------------------------------------------------------
-// 2. CENTRALIZED CLICK HANDLER (Replaces inline onclick)
+// 2. CENTRALIZED CLICK HANDLER (Event Delegation)
 // --------------------------------------------------------
 
 document.addEventListener('click', (e) => {
@@ -57,16 +43,13 @@ document.addEventListener('click', (e) => {
     const targetButton = e.target.closest('[data-scroll-to]');
 
     if (targetButton) {
-        e.preventDefault(); // Prevent default if it's an anchor tag
+        e.preventDefault(); // Prevent default anchor behavior
         const sectionId = targetButton.getAttribute('data-scroll-to');
         const sectionElement = document.getElementById(sectionId);
 
         if (sectionElement) {
-            // Smooth Scroll
             sectionElement.scrollIntoView({ behavior: 'smooth' });
-
-            // Close mobile menu if it's open
-            toggleMenu(true);
+            toggleMenu(true); // Close mobile menu if open
         }
     }
 });
@@ -77,18 +60,17 @@ document.addEventListener('click', (e) => {
 // --------------------------------------------------------
 
 const sections = ['home', 'about', 'skills', 'projects', 'resume', 'contact'];
-// Select only buttons inside nav-links for desktop highlighting
 const navButtons = document.querySelectorAll('.nav-links .nav-link');
 
 function setActiveSection() {
+    // Trigger highlight when section is 1/3 down the viewport
     const scrollPosition = window.scrollY + window.innerHeight / 3;
 
     sections.forEach(section => {
         const element = document.getElementById(section);
+        // Ensure element exists and we are within its bounds
         if (element && element.offsetTop <= scrollPosition && (element.offsetTop + element.offsetHeight) > scrollPosition) {
-
             navButtons.forEach(btn => {
-                // Match the data-scroll-to attribute with the current section
                 if (btn.getAttribute('data-scroll-to') === section) {
                     btn.classList.add('active');
                 } else {
@@ -99,8 +81,17 @@ function setActiveSection() {
     });
 }
 
-// Attach Scroll Event
-window.addEventListener('scroll', setActiveSection);
+// Throttle scroll event for performance
+let isScrolling = false;
+window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+            setActiveSection();
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+});
 
-// Initial call to set active state on load
+// Initial call
 setActiveSection();
