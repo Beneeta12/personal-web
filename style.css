@@ -34,6 +34,7 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility; /* Improves text clarity */
 }
 
 /* Typography */
@@ -249,7 +250,8 @@ button, .btn {
     position: absolute;
     inset: 0;
     z-index: 0;
-    opacity: 1;
+    /* Important LCP Optimization: Match avg color of background.jpg */
+    background-color: #dccfb8; 
 }
 
 .hero-bg img {
