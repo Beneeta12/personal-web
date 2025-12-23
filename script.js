@@ -67,7 +67,7 @@ if (mobileMenuBtn) {
 
 
 // --------------------------------------------------------
-// 2. FORM VALIDATION (No Phone Numbers Allowed)
+// 2. FORM VALIDATION
 // --------------------------------------------------------
 
 const contactForm = document.querySelector('.contact-form');
@@ -75,36 +75,46 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         const formData = new FormData(this);
-        const name = formData.get('name') || '';
+        const name = (formData.get('name') || '').trim();
         const message = formData.get('message') || '';
         
-        // Regular expression to find 10 or more consecutive digits
-        // or digits with common separators like dashes or spaces
+        // Validation 1: Phone numbers (10 or more consecutive digits)
         const phoneRegex = /(\d[\s-]*){10,}/;
+        
+        // Validation 2: No numbers allowed in the name field
+        const nameHasNumbers = /\d/.test(name);
 
-        if (phoneRegex.test(name) || phoneRegex.test(message)) {
+        let errorMessage = "";
+
+        if (nameHasNumbers) {
+            errorMessage = "Error: The Name field should not contain numbers. Please enter a valid name.";
+        } else if (phoneRegex.test(name) || phoneRegex.test(message)) {
+            errorMessage = "Error: Phone numbers are not allowed. Please remove any contact numbers to proceed.";
+        }
+
+        if (errorMessage) {
             e.preventDefault(); // Block the form submission
             
             // Create or update error message UI
-            let errorMsg = document.getElementById('form-error');
-            if (!errorMsg) {
-                errorMsg = document.createElement('p');
-                errorMsg.id = 'form-error';
-                errorMsg.style.color = '#ef4444';
-                errorMsg.style.marginTop = '1rem';
-                errorMsg.style.fontSize = '0.875rem';
-                errorMsg.style.fontWeight = '500';
-                contactForm.appendChild(errorMsg);
+            let errorMsgEl = document.getElementById('form-error');
+            if (!errorMsgEl) {
+                errorMsgEl = document.createElement('p');
+                errorMsgEl.id = 'form-error';
+                errorMsgEl.style.color = '#ef4444';
+                errorMsgEl.style.marginTop = '1rem';
+                errorMsgEl.style.fontSize = '0.875rem';
+                errorMsgEl.style.fontWeight = '500';
+                contactForm.appendChild(errorMsgEl);
             }
             
-            errorMsg.textContent = "Error: Phone numbers are not allowed in the name or message fields. Please remove any contact numbers to proceed.";
+            errorMsgEl.textContent = errorMessage;
             
-            // Highlight the message box briefly
-            const messageBox = document.querySelector('.form-textarea');
-            if (messageBox) {
-                messageBox.style.borderColor = '#ef4444';
+            // UI Feedback: Flash the offending input
+            const targetInput = nameHasNumbers ? document.querySelector('input[name="name"]') : document.querySelector('.form-textarea');
+            if (targetInput) {
+                targetInput.style.borderColor = '#ef4444';
                 setTimeout(() => {
-                    messageBox.style.borderColor = '';
+                    targetInput.style.borderColor = '';
                 }, 3000);
             }
         }
